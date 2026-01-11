@@ -11,6 +11,10 @@ h2{
     margin-bottom: 10px;
 }
 
+.nav-links{
+    margin: 10px 0;
+}
+
 a{
     text-decoration: underline;
     color: #0000ff;

@@ -21,6 +21,18 @@ a{
     color: #444;
 }
 
+#post-title{
+    font-weight: 700;
+    color: #000;
+    font-size: 1.5em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.nav-links{
+    margin: 10px 0;
+}
+
 hr{
     border-color: #444;
 }

@@ -1,21 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../reset.css">
-    <link rel="stylesheet" href="./poststyle.css">
-    <title>20240115: Rabbit R1 Reactions</title>
-</head>
-<body>
-    <h1><a id="site-title" href="../index.html">Journal of Carlos Gong</a></h1>
-    <div class="nav-links">
-        <a href="../index.html">Home</a> | <a href="../rss.xml">RSS</a>
-    </div>
-    <hr id="title-section-ender">
-    <article>
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>Journal of Carlos Gong</title>
+    <link>https://carlosgong.github.io</link>
+    <description>Journal of Carlos Gong</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 11 Jan 2026 14:14:45 GMT</lastBuildDate>
+    <item>
+      <title>20260111: 37 岁</title>
+      <link>https://carlosgong.github.io/posts/2026011101.html</link>
+      <description><![CDATA[
+        <h1 id="post-title">20260111: 37 岁</h1>
+        <p>距离上一次更新这个纯手动 blog，已经过去了将近 2 年。</p>
+        <p>上一次更新生日博文的时候，<a href="https://carlosgong.github.io/posts/2024011101.html">还是 35 岁生日</a>。两年过去了，我决定如果有可能的话，我至少应该每年生日这一天都更新一次。</p>
+
+        <h3>过去两年发生了点儿啥？</h3>
+        <p>感觉过去两年过得特别快，可能也是 36 岁生日没有写任何东西的原因。</p>
+        <ul>
+            <li>未能免俗，做了一台非常普通的 AI 手机，它对外的名字是 <a href="https://o.doubao.com">nubia M153 豆包手机助手预览版</a>。</li>
+            <li>这应该是我做过的时间最充裕的手机项目，很多时候都不是我在从一个 deadline 奔向另一个 deadline，而是我在刻意拉长每个项目阶段的时间，等待其它领域的功能和能力赶上来——硬件等软件，可能是 AI 产品的工程常态，老罗也遇到了这样的问题。</li>
+            <li>这也是我做过的在商业化层面上 drama 最多的项目，希望有一天我能把这些故事写出来——毕竟我确实觉得有很多人在这个项目上 deserve more credit，而另外一些人和团队的作用则被刻意夸大了。</li>
+            <li>在 24 年坚持了长时间的早起和规律健身，在 25 年的大部分时间也保持了每天一万步的基本运动底线，体能状况改善很明显，并且在 23 年那一次之后，就没有再痛风过了。</li>
+            <li>因为工作原因，在北京和深圳之间频繁飞行，最喜欢的飞行相关点位是首都机场 T3 C07 登机口旁边的星巴克、宝安机场出站口有个黄色拱门装饰的麦当劳、宝安机场 T3 出发区的老乡鸡。最不喜欢的点位是首都机场 T2 的海航休息室。</li>
+            <li>日语学习进展缓慢，依然处在能读五十音图、能看懂基本语法结构、但是单词要靠汉字词望文生义和拼读片假名词来猜外语含义的阶段，希望在 37 岁能显著改善一些。</li>
+            <li>去了很多次东京，很多时候其实只是为了能有一个地方和理由进行大量的徒步。同样的，也很喜欢滨海国际机场出发区的那间星巴克，每次都会在那边呆比较长时间。</li>
+            <li>开始以一个比较正确的态度来面对身上的一些旧疾，去了很多次牙科诊所来解决各种长期存在的牙病。花了不少钱，但是觉得值得。</li>
+        </ul>
+
+        <h3>37 岁会是有趣的一年</h3>
+        <p>在 36 岁的最后半年，感觉生活再次变得逐渐有趣起来了。</p>
+        <ul>
+            <li>在工作层面上，我看到了更多的 AI-native 硬件机会，希望到明年生日博文的时候，回头看看哪些想法是对的。</li>
+            <li>在我喜欢的全键盘消费电子设备领域里，很多有趣的硬件产品出现了：我已经购买并将在明天拿到 <a href="https://zinwa.cn/" target="_blank">Zinwa Q25</a>（给黑莓 Q20 换一套安卓主板），并且密切关注同一家厂在做的自研手机 Q27，我也觉得 Mr Mobile 的 <a href="http://www.youtube.com/watch?v=69VgtIJOtdQ&t=455s" target="_blank">Clicks Communicator</a> 非常有趣（虽然我觉得它不一定能做出来）。</li>
+            <li>计划探索更多国家（目前的 target list 是新西兰和新加坡）和东京以外的更多日本城市。</li>
+            <li>计划了和家人的春季 / 初夏赛里木湖旅行。</li>
+            <li>除了深圳以外，也计划去探索更多国内主要城市。从工作变动情况看，也确实会发生。</li>
+            <li>Vibe-coding is now a real thing. 有很多奇怪的想法，希望今年能至少实现 2～3 个——整体上，我觉得每个人都能写一个只有自己会用到的诡异小 app 的时代已经近在眼前了。</li>
+        </ul>
+        <p>其实本来想写点儿对 2026 年的预测，但是鉴于 <a href="https://carlosgong.github.io/posts/2024011501.html" target="_blank">前一篇文章</a> 很可能要变成回旋镖打回到我自己身上了，所以我决定今年还是（暂时先）不写了 ^_^</p>
+      ]]></description>
+      <pubDate>Sun, 11 Jan 2026 00:00:00 GMT</pubDate>
+      <guid>https://carlosgong.github.io/posts/2026011101.html</guid>
+    </item>
+    <item>
+      <title>20240115: Rabbit R1 Reactions</title>
+      <link>https://carlosgong.github.io/posts/2024011501.html</link>
+      <description><![CDATA[
         <h1 id="post-title">20240115: Rabbit R1 Reactions</h1>
-        <div class="callout">
+        <div style="border: #444 solid 1px; padding: 5px 10px; border-radius: 5px; margin: 20px 0;">
             <h4>Note:</h4>
             <p>We are now in an era of initial AI hardwares...</p>
             <p>我觉得在这个阶段记录一下自己的早期想法和看法，以后来看对了多少 / 错了多少，是一件很有意思的事情。</p>
@@ -106,15 +138,91 @@
         </ul>
         <p>最后，尽管上面全篇我都在避免实际讨论 LLM 和 LAM，但是最后还是忍不住想说：我觉得不管是 Humane 还是 Rabbit，当用户第一次拿到设备时，他们都会面临「预期这个设备能做什么」和「这个设备实际能做什么」之间的巨大落差。主要原因在于，<span class="bold">现在的用户，尤其是会买这两个设备的早期尝鲜用户，很可能是在以 AGI（真·通用人工智能）的预期去要求今天的 AI 产品</span>，而这，是非常非常危险的，因为它意味着不切实际的超高市场预期——会让第一批 AI 硬件在交付到用户手里的时候就见光死的那种。</p>
 
-        <div class="callout">
+        <div style="border: #444 solid 1px; padding: 5px 10px; border-radius: 5px; margin: 20px 0;">
             <h4>Update 2023.01.15 晚间 11PM:</h4>
             <p>经过同事提醒，北京时间今天傍晚左右，<a href="https://www.rabbit.tech/">Rabbit R1 的页面下方更新了一个基本的 spec 表</a>。</p>
             <p>按照 spec 表，这个 MTK 处理器的具体型号确实是 P35，同时也可以看到一些额外的信息，比如 R1 的充电速度非常缓慢，以 500mA 的电流，充 1000mAh 的电池，在实际使用环境中会需要大概 2.5 小时、甚至 3 小时左右。</p>
             <p>另一个有趣的事情是：基于我个人的一些经验，我觉得这套没啥亮点的 P35 方案的总价不会超过 $99（即使是计入小公司的议价权劣势和 Teenage Engineering 设计要求的溢价）。考虑到 R1 售价为 $199 且仅在官网发售（即没有其它渠道提成费用），<span class="bold">这意味着 Rabbit 团队的内部核算可能认为每个用户在生命周期中会造成的 AI 大模型相关费用大概为 $100 上下</span>，或者更多些。</p>
         </div>
 
-    </article>
-    <hr>
-    <a href="../index.html">返回首页</a>
-</body>
-</html>
+      ]]></description>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 GMT</pubDate>
+      <guid>https://carlosgong.github.io/posts/2024011501.html</guid>
+    </item>
+    <item>
+      <title>20240111: 35 岁</title>
+      <link>https://carlosgong.github.io/posts/2024011101.html</link>
+      <description><![CDATA[
+        <h1 id="post-title">20240111: 35 岁</h1>
+        <h3>1.</h3>
+        <p>小时候曾经觉得我活不到 18 岁。</p>
+        <p>后来 18 岁上了大学，觉得我大概活不到 30 岁。</p>
+        <p>开始工作以后，觉得 35 岁是一个特别遥远的岁数。</p>
+        <p>但是今天，我确实抵达了 35 岁。</p>
+
+        <h3>2.</h3>
+        <p>和更年轻的时候比起来，步入 35 岁时的几个身体上的感觉：</p>
+        <ul>
+            <li>身体确实变差了：2023 年 9 月，我经历了人生中的第一次痛风，有超过一周时间几乎无法出门，只能在家中各处依靠拐杖来移动；</li>
+            <li>睡眠确实变差了：一直到至少 31 岁，我都是一个可以无视大部分噪音（除非是很离谱的装修噪音），在几乎任何地方按照自己的意愿快速入睡的人。但是现在我变得认床、并且对噪音更加敏感——事实上，我最近正在因为邻居家的空调室外机声音影响我的睡眠而准备搬家；</li>
+            <li>不再擅长熬夜和倒时差：疫情三年之后，在 34 岁再次开始每季度跨国旅行时，发现我已经失去了「时差是什么？我不需要倒时差」的能力；</li>
+            <li>性能力有明显的衰退：for any activity involving the use of my penis, the experience I am able to deliver is now way worse.</li>
+        </ul>
+
+        <h3>3.</h3>
+        <p>我觉得在进入 35 岁时，我在心理上主要变化是：接受自己是一个不太聪明的人，并且不再为自己过去的「幼稚」行为和想法感到羞耻 / 不好意思。</p>
+        <p>我从 18 岁开始在 <a href="https://twitter.com/Carlos_Gong">twitter</a> 发碎碎念。在漫长的时间里，我不使用实名、甚至会每隔一段时间删除所有的信息，因为我很难面对过去的幼稚、偏激、想法奇怪的自己。</p>
+        <p>我也有很长一段时间会定期删除自己的 blog，甚至到最后完全不写了。因为我经历了非常多次「看自己以前写的 blog posts 感觉全是黑历史」的 moments，以至于到最后完全不愿意做任何记录了。</p>
+        <p>到了接近 35 岁的时候，我觉得经历了过去十几年的反复循环，这些「无法面对过去的自己」的想法都逐渐烟消云散了——我就是我，我有各种问题、我有很多不会的东西、我曾经想法很奇怪，但是这些都是生命中必经的阶段。所以我不再纠结这些了——过去几年，我没有再反复删除自己的 twitter 信息，并且最终在 35 岁的第一天，我有勇气去重新写 blog 记录更长篇一些的想法。</p>
+        <p>同时，这个 blog 的 title 叫做「Biased & Debatable」，因为我很直白地觉得，我的个人观点当然是 biased and debatable 的，会有很多人觉得根本不值得看、会有很多人不认同、会有很多人觉得我蠢、会有很多人有其它的各种看法，but I just no longer care :-)</p>
+
+        <h3>4.</h3>
+        <p>在过去的漫长岁月里，我曾经有很多想学的东西：日语、朝鲜语、前端开发、iOS 开发、数学、经济学、各种投机交易、历史、国际关系…… 有很多想读的书，也曾经无数次想要开始健身。</p>
+        <p>但是实际上，我的工作一直都很忙，也没有很多时间去学习和运动，所以给自己挖了很多个坑，但是没有任何一个填到了能让我自己满意的状态。</p>
+        <p>到了接近 35 岁的时候，在这些事情上，我也终于想开了：只要我还在上班，时间不足就是一件非常正常的事情，世界上不存在「副业」和「斜杠青年」，不管是做一件新的事、学习一种新的技能、还是在一个新的方向上提高自己，唯一有效的路径是在很短的时间里，饱和式地投入大量的时间，冲过一个良性循环的阈值，然后才可以细水长流地日拱一卒逐渐进步。</p>
+        <p>所以最终，我觉得在同一时间里只能给自己设立最多两个工作以外的目标，对于我自己来说，今年的一个是运动健身，另一个是日语。</p>
+
+        <h3>5.</h3>
+        <p>对于我来说，运动健身是一个已经冲过了良性循环阈值的事情。</p>
+        <p>经历了 9 月份的一场痛风之后，从 10 月份开始，我开始刻意每天花 1 个多小时的时间，给自己找各种理由来引入运动量。比如在圣何塞走 2 mile 节省 $10+ Uber 费用、或是在北京中午走到 3 公里以外的地方去吃某种我喜欢的三明治（不加芝士和酱料的版本 of course）。</p>
+        <p>从最初只能步行很短的时间开始（一部分是因为痛风还没完全好，一部分是因为确实体能差），到现在可以比较稳定地维持在每天 1 万步以上，并且尽量每天早起使用划船机。到 35 岁生日的今天，我的体重比 9 月份痛风发作时减少了 20% 多。</p>
+        <p>今年在运动健身方面的计划，总体的 O 是把体重降到正常区间，KR 包括运动类型、饮食习惯和贯穿全年的「周末特别活动」规划。日拱一卒，不期速成，每天都比前一天健康一点点，基本上就可以了。</p>
+
+        <h3>6.</h3>
+        <p>对于我来说，日语是一个我还没有冲过良性循环阈值的事情。</p>
+        <p>作为一个学语言出身的人，我觉得我在语言学习方面的良性循环阈值其实是很低的：掌握字母表和发音规则。剩下的都可以每天进步一点点来逐渐习得。</p>
+        <p>而日语和英语/西班牙语不同 (我是英语系毕业)，它的字母表和发音规则是非拉丁化的，所以我会需要在一两周的周末和晚间时间段里快速地解决五十音图相关的所有事情，然后进入到常规的课程学习里去。</p>
+        <p>同时，我在 23 年 5 月份办了日本的五年多次往返签证，但是一直没有使用过，我坚持觉得我应该在解决完「基本的读写能力」之后再去对应的国家，所以也确实需要比较快地冲过阈值，然后才可以不浪费掉这张签证 :-)</p>
+        <p>整个 2024 年，我只有这两个 New Year's Resolution，其它的都无所谓——是的，甚至工作也无所谓。</p>
+
+        <h3>7.</h3>
+        <p>这个 blog 放在了 Github Pages 上，没有采用任何一个博客程序，因为我预感到这一次应该不会再发生「过了一两年，觉得自己写的全是黑历史，情绪一波动就删光了」的情况。所以希望能自己完全掌控和理解这个 blog，而不是再借助于某种我并不完全理解代码和工作原理的现成程序（比如 Wordpress）。</p>
+        <p>目前，这是个「纯手动」blog：它事实上就是我在 Visual Studio Code 里面写了几个 html 页面，然后上传到了一个服务器上——就像 90 年代中期的人们一样。</p>
+        <p>会有这种情况，主要是因为事实上我自己能够理解的 web 技术很少：我会读和写一点点 html 和 css，几乎不会任何 JavaScript（还是能看懂一点），基本也就这样了。如果你只会写 html 和 css，那么你大概也就确实只能这样来写 blog 了。</p>
+        <p>好在我本身对于 blog 也没有什么特别的外观/功能要求。事实上，我一直想拥有一个看上去很原始、但是实际上以当代 web 技术构建的 blog——理想状态下，它看上去应该像是类似于 <a href="https://motherfuckingwebsite.com/">motherfucking website</a> 或是 <a href="https://stallman.org/">Richard Stallman 的个人主页</a> 这样的外观。</p>
+        <p>所以我的计划非常简单：</p>
+        <ul>
+            <li>会多少就用多少。不会的东西不要碰，除非先学会了——事实上，你不需要会很多东西才能写 blog post，要让自己起步，你只需要会这么少的东西。</li>
+            <li>Roadmap 驱动的学习，学一点改一点/加一点功能。我自己有一个 roadmap，上面有很多我希望给这个 blog 添加的功能，等学会了再慢慢添加。最近一个有可能会加上的功能是 RSS，因为我看了一下 RSS 的格式 spec，感觉好像也不是很难。而剩下的很多功能和自动化能力，大概需要先学习一段时间的 JavaScript，才可以逐渐地部署。</li>
+            <li>但是，学习这些东西 + 开发部署新功能，不应该占用上面的两个年度目标的时间——我完全可以接受一年之后我的 blog 还是现在这个纯手动、啥功能都没有的样子。</li>
+        </ul>
+
+        <h3>8.</h3>
+        <p>在写这篇 blog post 和完成第一版 blog 的过程中，我询问了很多次 <a href="https://www.ciciai.com/">Cici</a>（字节跳动的对话式大模型，海外版）。</p>
+        <p>以下是一个我问的所有问题的回顾（问的时候有中有英，统一为中文来简要记录），just because I think these are interesting logs，将来回顾版本历史的时候可能会觉得很有趣：</p>
+        <ul>
+            <li>怎样写一个 css reset 文件；</li>
+            <li>怎样安排 css reset 和 style.css 的顺序；</li>
+            <li>怎样定义 unordered list 的 bullet point 样式；</li>
+            <li>具体地解释一下怎样定义 list-style-type；</li>
+            <li>让页面上所有内容居中的方法；</li>
+            <li>不用 flexbox 怎样让所有内容居中（因为我不想全部 flexbox 化）；</li>
+            <li>怎样 target 到同类元素中的第一个；</li>
+            <li>怎样自定义 hr 元素的颜色和粗细。</li>
+        </ul>
+      ]]></description>
+      <pubDate>Thu, 11 Jan 2024 00:00:00 GMT</pubDate>
+      <guid>https://carlosgong.github.io/posts/2024011101.html</guid>
+    </item>
+  </channel>
+</rss>
