@@ -1,0 +1,34 @@
+---
+source: "https://www.theverge.com/tech/869084/folding-phone-google-pixel-10-pro-samsung-galaxy-z-fold-7"
+clipped: 2026-01-29
+---
+# My favorite folding phone is the one that doesn't exist yet
+书本式折叠手机提出一个激进的想法：如果你口袋里随时都有一台电脑，会怎样？
+
+当你想在飞机起飞时写博客，而大型电子设备（电脑）必须收起时怎么办？当你坐在沙发上整理杂货订单，而电脑在另一个房间时怎么办？当你的工作是写博客文章，但不被允许带电脑进入主题演讲会场时怎么办？这些都是我在过去一个月里使用 [Google Pixel 10 Pro Fold](https://www.theverge.com/tech/795298/google-pixel-10-pro-fold-review) 和 [Samsung Galaxy Z Fold 7](https://www.theverge.com/reviews/709990/samsung-galaxy-z-fold-7-review) 时遇到的真实场景。
+
+每款手机都提供了一块大屏幕，至少在看视频、阅读文章、以及你平常在手机上做的任何事情上都有足够的空间。但我最近一直在把它们推向「电脑」的领域，结果 largely 非常出色。这种体验只会让我更加贪心；我现在看到了 Z Fold 7 和 Pixel 10 Pro 各自的优势和劣势——而且我确信理想的折叠手机就在这两者之间。
+
+关于把两部手机粘在一起这件事，结果是这个设备通常重得就像两部手机粘在一起一样。Google Pixel 10 Pro Fold 就是如此，它重到不断提醒你自己口袋里装着什么。但 10 Pro Fold 有一个秘密武器：内置磁铁的 Qi2，让你可以使用磁吸式的 Pop Socket 类支架。我带着 Google 的 Pixelsnap 品牌环形支架使用它，这有助于缓解长时间握持手机时的重量问题。它某种程度上也能当支架用，而且一个同时是平板的手机难道不应该有办法支撑起来吗？我用得越多，就越开始相信这一点。
+
+10 Pro Fold 还有一个特点影响了我的决定，让我在假期家庭旅行和去拉斯维加斯参加 CES（一个名副其实的沙漠！）时带上它：防尘性能。任何要成为我日常主力机的手机都必须能承受我手提包底部的恶劣环境，那里是小金鱼饼干碎裂和死亡的地方。它是唯一一款具有完整 IP68 防尘等级的折叠手机，这让我每次把它扔进包里时都能真正安心。
+
+但在拖着它走了几周之后，我已经准备好用更轻的东西来替换 10 Pro Fold 了。所以我换成了 Galaxy Z Fold 7，三星的超薄轻便折叠手机。它只比标准直板手机重一点点，让它在携带和握持时舒适得多。纸面上看起来差别不大，但我向你保证——这是一种你在无数细微之处都能感受到的差异。
+
+给 Z Fold 7 加哪怕一个薄壳都感觉与其整体理念相悖
+
+既然不能拥有一切，Z Fold 7 缺乏完整的防尘性能（它只能防止大颗粒灰尘），所以我在日常使用时感到有点紧张。还缺少的是：集成的 Qi2 磁铁。三星提供了几款带磁环的低调手机壳，但我不是用壳的人。而且给 Z Fold 7 加哪怕一个薄壳都感觉与其整体理念相悖。
+
+也许这只是我的执念，尽管我忍不住觉得，一个可以随手贴在手机背面的简单环形支架正是它所需要的。当我想要充分享受 Z Fold 7  ridiculously 纤细的身材时，撬掉手机壳感觉 unnecessarily 繁琐，而其实有更简单的选择。一个支架还能解决摄像头凸起导致手机在平面上使用时摇晃的问题；我总是把手机靠在饮料杯垫上来稳定它。我知道手机壳也能帮上忙，但请参见我前面关于对手机壳过敏以及想要随时轻松去掉支撑机制的观点。
+
+既然我在这里进行自己的梦幻手机选秀，我对软件也有一些想法。我喜欢 Pixel 的 Android 实现的简洁性，但我更喜欢三星在内屏运行多应用方面的宽松态度。我在 Z Fold 7 上安装了 Gboard 并卸载了大部分三星预装的臃肿应用，这要比开箱即用的体验愉快得多。
+
+[![手中展示的 Samsung Galaxy Z Fold 7 和 Google Pixel 10 Pro Fold。](https://platform.theverge.com/wp-content/uploads/sites/2/2026/01/DSC02339_processed.jpg?quality=90&strip=all&crop=0%2C0%2C100%2C100&w=2400)](https://platform.theverge.com/wp-content/uploads/sites/2/2026/01/DSC02339_processed.jpg?quality=90&strip=all&crop=0,0,100,100)
+
+*也许我现在就同时带着这两款手机吧。*
+
+我知道我听起来像个真正的抱怨者。「女人对 2000 美元的手机不满意」这不是现在任何人需要知道的 revelation。是的，我知道平板存在，但我不想在已经带着的手机之外再带一个。所以如果你能容我片刻，我之所以这么贪心，是因为我在过去几个月里看到了这些设备的巨大潜力。折叠手机从一开始就很酷，但我从未像现在这样确信它们的 real-world 实用性。
+
+我在从 CES 回来的路上用 Pixel 10 Pro Fold 写了[一整篇博客文章](https://www.theverge.com/tech/859776/ces-2026-phones-clicks-communicator-ikko-samsung-trifold)，当时我的笔记本拒绝连接飞机 Wi-Fi，但手机做到了。我一边在屏幕一侧打开 Amazon，另一侧在 Paprika 中打开购物清单，完成了我们每周的杂货订购。我在 Sphere 里面给这个网站发布了一篇 quick post！能够在一台既防水又防尘、又薄得能放进我的瑜伽裤口袋、又轻得能冒充普通手机、还有方便的磁吸支架让你全天舒适使用的设备上做到这一切？这就是折叠手机的承诺，朋友们。我只希望有*一台*设备能满足所有这些愿望。
+
+*摄影：Allison Johnson / The Verge*

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>长文稍后读</title>
+  <link rel="stylesheet" href="web/assets/style.css">
+  <style>
+    .list-header {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 24px;
+      padding: 12px 0;
+      border-bottom: 2px solid #ddd;
+      font-weight: 600;
+      color: #666;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .list-header span:last-child,
+    .article-row .clipped {
+      min-width: 100px;
+      text-align: right;
+    }
+
+    .list-header span:nth-child(2),
+    .article-row .source {
+      min-width: 180px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>The "Read it Later" List</h1>
+    </header>
+
+    <div class="article-list">
+      <div class="list-header">
+        <span>标题</span>
+        <span>来源</span>
+        <span>收藏时间</span>
+      </div>
+
+      <div class="article-row">
+        <a href="web/posts/the-dilbert-afterlife.html" class="title">The Dilbert Afterlife</a>
+        <span class="source">astralcodexten.com</span>
+        <span class="clipped">2026-01-30</span>
+      </div>
+
+      <div class="article-row">
+        <a href="web/posts/I-grew-up-with-Alex-Pretti.html" class="title">I grew up with Alex Pretti</a>
+        <span class="source">theverge.com</span>
+        <span class="clipped">2026-01-29</span>
+      </div>
+
+      <div class="article-row">
+        <a href="web/posts/my-favorite-folding-phone-is-the-one-that-doesnt-exist-yet.html" class="title">My favorite folding phone is the one that doesn't exist yet</a>
+        <span class="source">theverge.com</span>
+        <span class="clipped">2026-01-29</span>
+      </div>
+
+      <div class="article-row">
+        <a href="web/posts/promoting-ai-agents.html" class="title">Promoting AI agents</a>
+        <span class="source">world.hey.com</span>
+        <span class="clipped">2026-01-29</span>
+      </div>
+
+      <div class="article-row">
+        <a href="web/posts/full-metal-jacket.html" class="title">Full Metal Jacket</a>
+        <span class="source">daringfireball.net</span>
+        <span class="clipped">2026-01-29</span>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <a href="../index.html" class="footer-link">↑ 返回博客首页</a>
+    </footer>
+  </div>
+</body>
+</html>
