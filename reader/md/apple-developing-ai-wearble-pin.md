@@ -2,7 +2,7 @@
 source: "https://www.theinformation.com/articles/apple-developing-ai-wearable-pin"
 clipped: 2026-01-31
 ---
-# Apple Developing AI Wearable Pin — The Information
+# Apple Developing AI Wearable Pin
 
 Apple is developing an AI-powered wearable pin the size of an AirTag that is equipped with multiple cameras, a speaker, microphones and wireless charging, according to people with direct knowledge of the project. The device could be released as early as 2027, they said.
 

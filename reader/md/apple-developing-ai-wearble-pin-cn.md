@@ -2,7 +2,7 @@
 source: "https://www.theinformation.com/articles/apple-developing-ai-wearable-pin"
 clipped: 2026-01-31
 ---
-# Apple Developing AI Wearable Pin — The Information
+# Apple Developing AI Wearable Pin
 
 据直接了解该项目的人士透露，苹果正在开发一款AI驱动的可穿戴别针，大小与AirTag相当，配备多摄像头、扬声器、麦克风和无线充电功能。他们表示，该设备最早可能于2027年发布。
 
