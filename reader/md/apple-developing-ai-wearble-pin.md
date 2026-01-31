@@ -1,0 +1,33 @@
+---
+source: "https://www.theinformation.com/articles/apple-developing-ai-wearable-pin"
+clipped: 2026-01-31
+---
+# Apple Developing AI Wearable Pin — The Information
+
+Apple is developing an AI-powered wearable pin the size of an AirTag that is equipped with multiple cameras, a speaker, microphones and wireless charging, according to people with direct knowledge of the project. The device could be released as early as 2027, they said.
+
+Such a product would position Apple to compete more effectively with OpenAI, which is planning its own AI-powered devices, and Meta Platforms, which is already selling smart glasses that offer access to its AI assistant. Google also plans to release smart glasses, in conjunction with Samsung, with AI capabilities.
+
+### The Takeaway
+
+- Apple’s wearable AI pin is about the size of an AirTag
+- It features two cameras, speaker, microphones and wireless charging
+- Apple plans to build as many as 20 million units at launch in 2027
+
+Apple’s development is in the very early stages and could still be canceled. Still, Apple is endeavoring to move faster than usual, to try and stay competitive because of OpenAI, one of the people said. It’s planning to manufacture roughly 20 million units at launch, the person added.
+
+An Apple spokesperson didn’t have a comment.
+
+Apple’s pin joins a growing portfolio of AI-powered products the tech giant has under development, including AirPods equipped with enhanced sensors, a security camera, smart glasses and augmented reality glasses, according to multiple people familiar with the projects. Apple is also working on a home product featuring a small display, speakers and a robotic swiveling base, designed with a heavy emphasis on AI features. That device could be released as soon as this spring, according to two of the people.
+
+Apple’s pin, which is a thin, flat, circular disc with an aluminum-and-glass shell, features two cameras—a standard lens and a wide-angle lens—on its front face, designed to capture photos and videos of the user’s surroundings, the people said. It also includes three microphones to pick up sounds in the area surrounding the person wearing it. It has a speaker, a physical button along one of its edges and a magnetic inductive charging interface on its back, similar to the one used on the Apple Watch, the people said. Apple engineers are aiming to make the pin the same size as an AirTag, only slightly thicker, one of the people said.
+
+It isn’t clear whether Apple intends to bundle the pin with another product such as smart glasses or future AirPods. However, the presence of a physical button, built-in microphones and a speaker on the pin suggests users could interact with it more independently, potentially connected to a more powerful device like an iPhone for on-device processing. Similar to AirTags, consumers would likely need to purchase additional accessories to attach it to bags or clothing, though Apple could still change the design to incorporate built-in attachment options given how early it is in development.
+
+Whether an Apple pin would sell well is uncertain. Humane, a startup founded by two former Apple employees, struggled to gain traction in 2024 with its own wearable AI pin, which reportedly sold fewer than 10,000 units. Parts of Humane were eventually sold to HP for $116 million. Humane’s pin, which could cast an interface onto a user’s palm using a small projector, faced criticism for its slow speed in answering questions and for its poor battery life.
+
+The success of Apple’s AI pin also hinges on whether the company can release an upgraded version of Siri with AI features users find compelling. While rivals like OpenAI, Meta, Google and Amazon are rolling out new voice assistants powered by large language models, Apple delayed its own AI upgrades to Siri last year due to quality issues. It was an embarrassing setback, leading to a reorganization of the AI group and Siri, along with the retirement of Apple’s head of AI, John Giannandrea.
+
+Apple executives may be more confident in the upcoming pin’s capabilities following a recent announcement earlier this month that the company will partner with Google to use its AI models to power Apple Intelligence, the umbrella name for Apple’s AI features.
+
+Meanwhile, Apple is racing to beat companies such as OpenAI to market with new AI devices. OpenAI has at least four AI-powered products in development, including a pin, a pen, glasses and a desktop speaker, The Information has previously reported. In addition, OpenAI is developing earbuds with a likely release as soon as the end of this year, according to a person with direct knowledge of the matter.
