@@ -1,0 +1,106 @@
+---
+source: "https://sherwood.news/markets/d-wave-quantum-ceo-on-whats-next-after-the-most-eventful-month-in-the/"
+clipped: 2026-02-01
+---
+# D-Wave Quantum CEO on what’s next after the most eventful month in the company’s history
+
+> “If 2025 was the international year of quantum, 2026 is the international year of D-Wave Quantum,” said CEO Dr. Alan Baratz.
+
+It’s been an eventful month for [D-Wave Quantum QBTS](https://robinhood.com/stocks/QBTS?source=sherwood).
+
+Near the start of the year, the company announced a technological [breakthrough that would help scale gate-model quantum systems](https://sherwood.news/markets/d-wave-quantum-touts-tech-breakthrough-that-lets-gate-models-scale/) — and followed that up the next day with an acquisition of Quantum Circuits [for $550 million in a cash and stock deal](https://sherwood.news/markets/d-wave-quantum-agrees-to-acquire-quantum-circuits-for-usd550-million-to/). That deal aims to accelerate the development of D-Wave’s gate-model system in addition to its existing annealing quantum offerings.
+
+Then, during its annual Qubits conference held in Florida this week, the company [dropped this trifecta](https://sherwood.news/markets/d-wave-quantum-jumps-20-million-system-deal-davidson-and-anduril-air-missile-defense/): a $20 million sale of one of its Advantage2 systems, a collaboration with Davidson and Anduril that shows promising potential gains for US missile defense, and a $10 million, two-year quantum computing as a service deal with an unnamed Fortune 100 company.
+
+We spoke with D-Wave CEO Dr. Alan Baratz on Thursday to get the lowdown on what to make of all these different moving parts and the path he’s chartering going forward.
+
+Some highlights:
+
+- Baratz thinks D-Wave is six to seven years away from commercializing a sufficiently scaled, fully error-corrected gate-model quantum computer.
+	- The Quantum Circuits acquisition gives D-Wave access to “revolutionary technology,” including superconducting qubits that have internal error correction that address the most common error.
+		- Last January, the company and its peers got clobbered after Nvidia CEO Jensen Huang [said it would take 15 to 30 years](https://sherwood.news/markets/quantum-computing-stocks-tumble-on-nvidia-ceos-comment-that-theyre-decades/) before quantum computers were “very useful.” Shortly thereafter, Baratz [told us](https://sherwood.news/markets/d-wave-quantum-ceo-1-million-qubits-jensen-huang/), “When Jensen says 15 to 30 years, if he’s talking about gate-model systems, I don’t disagree.”
+- D-Wave believes it will be selling a dual-rail gate-model system in the near future.
+	- “I was in a meeting with one of our customers and they said they’d like to buy a dual-rail system,” Baratz said of a discussion he had this week.
+- The government is warming to annealing quantum technology:
+	- The collaboration with Anduril and Davidson is leading to “ongoing and future work there.”
+	- “We are now also talking to several different Department of War agencies that have applications that are challenging with classical computing today, and they’re starting to work with us to leverage our quantum computers.”
+	- Senators are showing “genuine interest” in adding an annealing component to the Quantum Benchmarking Initiative.
+		- Last May, Baratz told us that he was “profoundly disappointed” that the US government “ [just hasn’t been interested](https://sherwood.news/markets/d-wave-ceo-explains-where-the-us-is-falling-behind-the-rest-of-the-world-on/) ” in annealing quantum technology, and preferred to support gate-model development.
+- Baratz still feels well capitalized, but would look to raise capital in the event that attractive M&A opportunities present themselves:
+	- “We still have over $600 million in the bank. We still have what we believe to be a fully funded plan to get to profitability... We’re always looking at options and opportunities, and if we feel we need to add to the war chest to be able to do some more inorganic growth, we may do that.”
+
+*This transcript has been lightly edited for clarity.*
+
+**Sherwood News:** Thinking big picture, how would you describe what January has meant for D-Wave? Is this the biggest month for the company? The most transformative?
+
+**Alan Baratz:** If 2025 was the international year of quantum, 2026 is the international year of D-Wave Quantum. We have just demonstrated an ability to do a large enterprise quantum computing as a service deal. That was a two-year, $10 million deal with a Fortune 100 company to drive multiple applications through development and into production.
+
+We demonstrated our ongoing ability to sell systems, which was evidenced by the $20 million system sale to Florida Atlantic University. We demonstrated our ability to deliver value to the US government through the work that we’ve done with Davidson and Anduril on missile defense, where we were getting very, very good results on the application that we developed with them — to the point where we had somebody from Anduril on stage with us at Qubits saying they went into it thinking that it was early for quantum, but it would be worth experimenting with, and were shocked by how much value we were able to deliver.
+
+We are moving our corporate headquarters from Palo Alto to Boca Raton, and setting up a new R&D center here in Boca, which means we will also have a bicoastal platform plan for high availability and disaster recovery of our cloud service.
+
+And then the biggie was that we announced the acquisition of Quantum Circuits, which brings us truly revolutionary transformative gate-model technology, basically moving D-Wave to the front of the pack on gate model, and of course we’ve always been the leaders on annealing. So really exciting three weeks.
+
+**Sherwood:** I’ll pick up with where you left off. That QCI deal, it came just after an announcement from D-Wave about advancements in applying cryogenic control capabilities to gate-model architectures. Was that a prerequisite for this acquisition, to be able to demonstrate that capability, or is this something that unlocks a more expeditious development path? How do those two things tie together, if at all?
+
+**Baratz:** First of all, we had been pursuing a gate-model program prior to the Quantum Circuits acquisition, and we had been making good progress in some key areas, like the ability to efficiently control gate-model qubits and gate-model quantum systems, but we hadn’t been making quite as much progress on high-fidelity gate-model qubits. So the Quantum Circuits acquisition brings us the high-fidelity qubit technology, which means that essentially we now have the two main pillars for bringing to market a commercial gate-model quantum computer: the ability to efficiently error-correct through the qubit technology that Quantum Circuits brings to us, and the ability to efficiently scale the systems to qubits and logical qubits that allow us to actually pursue commercial applications through the cryogenic control technology that we’ve been developing in-house.
+
+**Sherwood:** And in terms of this deeper push in the gate space, when we first talked about it a year ago, I think you mentioned that one of the things you agreed with Nvidia CEO Jensen Huang about was that the timetable for gate-model development to be commercially viable was going to be longer, potentially in the decades. Have your views on that timetable changed at all since then?
+
+**Baratz:** I’ve always said that there are different approaches to quantum maturing in different time frames. Annealing is mature today, commercial today. We’ve demonstrated quantum supremacy on our annealing platforms.
+
+Gate-model systems are still very much in the R&D phase, every one of them. But what has been top of mind, I think, for the entire industry and myself is that we need to be able to error-correct these systems, and we need to be able to scale them. My view had always been that error correction was a huge challenge, that it would take time to deliver on, and that scaling was a challenge that would take time to deliver on. But the technology from Quantum Circuits — which, honestly, I wasn’t close to when I was previously talking about time frames for gate-model development — it’s truly revolutionary. I mean, we are talking about superconducting qubits.
+
+They’re superconducting in the sense that they’re 1,000x faster than trapped-ion or neutral-atom qubits, but they have the fidelity of trapped-ion qubits. In other words, you can easily error-correct them, but you also get the speed required for a quantum computer. The best of both worlds.
+
+And that means that I now kind of see the path to efficient error correction within a reasonable time frame. Read that as maybe five to seven years rather than seven years to 15 years. Then when you combine that with the scaling technology that we’ve developed addressing the other part of the problem for commercializing gate models, I really do believe that we’re on the shorter end of the time frame that I’d had in mind. I had been saying seven years to 15 years; I think that we are now on the short end of that. Maybe six, but likely seven years.
+
+**Sherwood:** And in terms of the dual-rail gate-model system you’re developing, can you loosely explain what that’s going to be, and its abilities and limitations?
+
+**Baratz:** As I’ve already said, what’s really transformative about the Quantum Circuit dual-rail technology is that we are talking about superconducting qubits. So they’re fast, but with the fidelity of trapped-ion or neutral-atom qubits, so they can be more easily error-corrected now. The way they do that is by having the ability to, within the qubit, detect if an error occurred. Now think about this: all the qubits that are being used today for gate model, no matter what the modality, require external error correction on the system to deal with any and all errors.
+
+The dual-rail qubits are qubits that themselves can detect the most common error, which is an erasure error, so that when they report results, they not only report the results of the computation, but they report whether or not an error has occurred. This then greatly simplifies overall error correction because the most common error is detected by the qubit itself, and then we need overall error correction to A) deal with the other types of errors, and B) do the correction. So it dramatically simplifies error correction, which means we can error-correct superconducting qubits with a relatively small number of physical qubits per logical qubit, more like trapped-ion qubits.
+
+So that’s one important aspect of the dual-rail qubits. The other is, even before we get to error correction, because the dual-rail qubits detect errors and can report out whether or not an error has occurred, it’s opening up new opportunities to explore new developer tools, new algorithms, potentially new use cases that might even be useful before we get the full error correction, because now the algorithms can leverage the fact that the qubits are reporting out errors.
+
+We’re calling these the first post-NISQ gate-model systems. Noisy, intermediate, scale quantum — that’s what all the current gate-model systems are, because they have no error corrections, they are noisy. These dual-rail qubits are allowing us to deliver the first post-NISQ systems, not yet fully error-corrected, but able to report errors, and then the algorithms can use those errors to do potentially useful things that they couldn’t previously do.
+
+**Sherwood:** The last time we chatted, you mentioned there was a lot of appetite for a D-Wave gate system, a client who said they’d buy one when you developed one. Is that something we can look forward to in the near future?
+
+**Baratz:** In a word, yes. We have an eight-qubit dual-rail system operational today. We will have a 17-qubit dual-rail system operational before the end of this year. We will for sure have dual-rail systems in our Leap Cloud service so that customers can access them and purchase access to them as quantum computing as a service, the same as they do with our annealing systems.
+
+But remember, for the last two days we have been at our yearly Qubits customer conference, our group conference where we bring all our customers and customer prospects in. I will tell you, I was in a meeting with one of our customers and they said they’d like to buy a dual-rail system. So the answer is yes.
+
+**Sherwood:** Turning to the quantum computing as a service side a bit, I know you have some outward-facing clients, like Ford Otosan and NTT DOCOMO, who are open about having what you do for them publicized. I presume you’d love to share the work that you’re doing with this big, new $10 million customer. What’s the process of doing that look like?
+
+**Baratz:** We would love to share the work we’re doing with this client. The work is very far advanced. The first application has been developed. They have seen very strong results, which is why they entered into a two-year enterprise license, because they’re in the process of moving that first application into production and they have quite a few others that they want to pursue with us.
+
+So I’m hopeful that at some point in the not-too-distant future, we’ll be able to publicly name the customer and talk about the applications. But what I can tell you is that right now we can use them as a reference, so a confidential reference as we’re out selling, which is very important and powerful.
+
+**Sherwood:** And to connect the annealing and gate dual-system track development, is the idea here that if you can get customers with you to solve — I don’t want to call them easy, but easier problems with annealing quantum technology, you’ll be able to develop and retain them as gate technology develops and you’re looking to solve different, more complex problems?
+
+**Baratz:** Remember, there are use cases that require annealing and always will. These are business optimization applications. We’ve talked about this before, employee scheduling, manufacturing, plant floor optimization that includes, you know, things like the work we did with Pattison Food Group, the work we did with BASF on optimizing how they fulfill orders in the manufacturing process, the work we did with NTT DOCOMO, optimizing cell tower resource utilization. This class of problems will always require an annealing quantum computer.
+
+Then there are other problems that will always require a gate-model quantum computer, quantum chemistry, computational fluid dynamics. So we’re in an environment where we have commercial and annealing quantum computers today, able to solve important business optimization problems, important use cases for customers, and we’re able to start building what we think will be a very strong business around that. But because we built a trusted relationship with our customers, leveraging annealing, supporting applications that require annealing, they’re also now asking us about our gate-model system for other classes of problems. So that represents, if you like, an additional sales opportunity for us, either quantum compute as a service or system sales to address the problems that gate can address.
+
+So this dual-platform strategy that we have with annealing and gate means that we can address the full set of use cases, the full addressable market for quantum, and frankly, be the one-stop shop for quantum for our customers.
+
+**Sherwood:** On the Davidson and Anduril collaboration and demonstration — to me, that represented a huge breakthrough not just in terms of what the technology displayed, but more of a fundamental underlying point that you’ve been trying to make for a while, which is that annealing technology has national security and US government applications right now. Has there been a change in how annealing quantum technology is perceived by US decision-makers?
+
+**Baratz:** Again, the answer is yes, and you’re right, the application that we developed with Anduril is a part of that. I mean, this was a missile defense application where we basically reduced by a factor of 10 the time to solve the problem. We were able to improve threat mitigation by up to 12%, intercepting up to 60 more missiles in a 500-missile attack. So very, very strong results leading to now ongoing and future work there.
+
+But we are now also talking to several different Department of War agencies that have applications that are challenging with classical computing today, and they’re starting to work with us to leverage our quantum computers. So this is not US government quantum research; this is US government use of quantum computers to solve hard problems now.
+
+If we talk about research, the kind of premier research vehicle, if you like, is the QBI program out of DARPA. And interestingly, the Senate version of the National Quantum Initiative reauthorization includes language that annealing needs to be part of QBI.
+
+That has actually resulted in some discussions with senators and then following discussions with us around asking us to submit annealing to the QBI program. Now we don’t know where that will go, but there is a genuine interest in looking at an annealing component to the QBI program.
+
+**Sherwood:** You’ve spent about $250 million in cash on the QCI acquisition. Do you still feel well capitalized? Because in my seat, whenever you see a consistent string of news like this from a growth company, you will often see a capital raise announced in the days to weeks thereafter.
+
+**Baratz:** We still have over $600 million in the bank. We still have what we believe to be a fully funded plan to get to profitability. That having been said, we’re not necessarily going to grow only organically from here on out, so we’re always looking at options and opportunities, and if we feel we need to add to the war chest to be able to do some more inorganic growth, we may do that.
+
+**Sherwood:** And to wrap up… when we talk again three or six months down the road, what will we be talking about? What are the milestones you’ve reached that I’ll be asking about, the things you want to cross off your list?
+
+**Baratz:** First of all, we are really focused on building the business, so look for continuing new bookings, growth in bookings, both on the quantum computing as a service side as well on the system sales side. Then look for product deliverables. We will not be delivering the full 100,000 Qubit Advantage3 system this year, in 2026. But you will see interim deliverables against the Advantage3 system this year. Look for deliverables on the dual-rail system, for example, a dual-rail system in the Leap Cloud, a dual-rail system sale, the availability of the 17-qubit dual-rail system.
+
+And growth in the business. Growth or progress on the technology road map. Then finally, we are making really good progress on leveraging quantum for AI — better, faster, more energy-efficient model training. That’ll probably start with a research paper, but, you know, be on the lookout for something in that arena.
