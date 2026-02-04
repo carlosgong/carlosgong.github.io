@@ -5,32 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>长文稍后读</title>
   <link rel="stylesheet" href="web/assets/style.css">
-  <style>
-    .list-header {
-      display: grid;
-      grid-template-columns: 1fr auto auto;
-      gap: 24px;
-      padding: 12px 0;
-      border-bottom: 2px solid #ddd;
-      font-weight: 600;
-      color: #666;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .list-header span:last-child,
-    .article-row .clipped {
-      min-width: 100px;
-      text-align: right;
-    }
-
-    .list-header span:nth-child(2),
-    .article-row .source {
-      min-width: 180px;
-      text-align: left;
-    }
-  </style>
 </head>
 <body>
   <div class="container">
@@ -43,6 +17,12 @@
         <span>标题</span>
         <span>来源</span>
         <span>收藏时间</span>
+      </div>
+
+      <div class="article-row">
+        <a href="web/posts/oh-the-humanity.html" class="title">Oh the Humanity</a>
+        <span class="source">sandofsky.com</span>
+        <span class="clipped">2026-02-04</span>
       </div>
 
       <div class="article-row">

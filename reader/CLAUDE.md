@@ -53,40 +53,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
      curl -L -o "web/assets/images/{image-name}.jpg" "{image-url}"
      ```
 
-2. **确保 CSS 图片样式存在**（在 `web/assets/style.css` 中）：
-   ```css
-   .content img {
-     max-width: 100%;
-     height: auto;
-     border-radius: 6px;
-     margin: 20px 0;
-   }
+2. **确保 CSS 图片样式存在**（在 `web/assets/style.css` 中）；
 
-   .content figure {
-     margin: 20px 0;
-   }
-
-   .content figcaption {
-     font-size: 14px;
-     color: #666;
-     text-align: center;
-     margin-top: 8px;
-     font-style: italic;
-   }
-   ```
-
-3. **HTML 中引用本地图片**：
-   - 使用 `<figure>` 和 `<figcaption>` 包裹图片
-   - 图片路径：`../assets/images/{image-name}.jpg`
-   - 示例：
-     ```html
-     <figure>
-       <a href="../assets/images/example.jpg">
-         <img src="../assets/images/example.jpg" alt="图片描述">
-       </a>
-       <figcaption>图片说明文字</figcaption>
-     </figure>
-     ```
+3. **在 HTML 中引用本地图片，以避免在线图片失效**：
 
 ### 第三阶段：创建 HTML 页面
 
