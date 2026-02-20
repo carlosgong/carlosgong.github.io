@@ -1,7 +1,4 @@
 # CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## 沟通礼仪
 * 使用中文进行回复
 * 语气言简意赅，中立专业
@@ -41,6 +38,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
      - 保留所有链接和图片引用
      - 不添加额外解释
      - 提供全文翻译
+   - **翻译执行方式（强制）**：
+     - 必须由你基于 `docs/translationPrompt.md` 自行完成翻译（人工翻译）
+     - **禁止**调用任何外部翻译工具或翻译 API（如 Google Translate、DeepL、机器翻译插件等）直接生成译文
+     - 如篇幅很长，也必须继续按上述规则完成全文人工翻译，不可降级为机翻
    - frontmatter 保持不变（source, clipped）
 
 ### 第二阶段：处理图片（如文章包含图片）
@@ -77,6 +78,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
    - 内容替换为中文翻译（来自 `md/{article-name}-cn.md`）
    - 语言切换器改为：`<a href="{article-name}.html">源语</a> / <span>中文</span>`
    - 页面标题可添加 `(中文)` 后缀
+   - **必须保留页面底部导航（强制）**：源语版与中文版都必须包含完整 footer 区域，至少包括：
+     - 返回目录：`<a href="../../index.html" class="back-link">← 返回目录</a>`
+     - 返回博客首页：`<a href="../../../index.html" class="blog-link">↑ 返回博客首页</a>`
+   - 不得省略上述任一链接
 
 ### 第四阶段：更新首页
 
@@ -112,5 +117,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 首页只链接源语版 HTML
 - 中英文页面通过 `.lang-switch` 互相切换
 - 翻译时保留原文 frontmatter，标题行保留原文不翻译
+- 翻译必须依据 `docs/translationPrompt.md` 由你自行完成，**禁止使用外部翻译工具/API**
 - 所有页面共享 `web/assets/style.css` 样式
+- 所有文章 HTML（源语版与中文版）都必须包含 footer 中的「返回目录」和「返回博客首页」两个链接
 - **首页文章按倒序排列：最新收藏的文章插入到列表最顶部（list-header 之后第一个位置）**
