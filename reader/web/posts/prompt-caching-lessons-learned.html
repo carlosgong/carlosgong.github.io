@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lessons from Building Claude Code: Prompt Caching Is Everything</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="container">
+    <article>
+      <header>
+        <h1>Lessons from Building Claude Code: Prompt Caching Is Everything</h1>
+        <div class="meta">
+          <span>来源: <a href="https://x.com/trq212/status/2024574133011673516" target="_blank" rel="noopener">x.com</a></span>
+          <span>收藏于: 2026-02-20</span>
+        </div>
+        <div class="lang-switch">
+          <span>源语</span> / <a href="prompt-caching-lessons-learned-cn.html">中文</a>
+        </div>
+      </header>
+
+      <div class="content">
+        <p>It is often said in engineering that &quot;Cache Rules Everything Around Me&quot;, and the same rule holds for agents.</p>
+        <p>Long running agentic products like Claude Code are made feasible by <strong>prompt caching</strong> which allows us to reuse computation from previous roundtrips and significantly decrease latency and cost.</p>
+        <p>What is prompt caching, how does it work and how do you implement it technically? <a href="https://x.com/RLanceMartin/status/2024573404888911886">Read more in @RLanceMartin&#39;s piece on prompt caching and our new auto-caching launch.</a></p>
+        <p>At Claude Code, we build our entire harness around prompt caching. A high prompt cache hit rate decreases costs and helps us create more generous rate limits for our subscription plans, so we run alerts on our prompt cache hit rate and declare SEVs if they&#39;re too low.</p>
+        <p>These are the (often unintuitive) lessons we&#39;ve learned from optimizing prompt caching at scale.</p>
+        <h2>Lay Out Your Prompt for Caching</h2>
+        <p><img src="../assets/images/prompt-caching-lessons-learned-01.jpeg" alt="Image"></p>
+        <p>Prompt caching works by prefix matching — the API caches everything from the start of the request up to each cache_control breakpoint. This means the order you put things in matters enormously, you want as many of your requests to share a prefix as possible.</p>
+        <p>The best way to do this is static content first, dynamic content last. For Claude Code this looks like:</p>
+        <ol>
+        <li><strong>Static system prompt</strong> &amp; Tools (globally cached)</li>
+        <li><a href="https://claude.md/">Claude.MD</a> (cached within a project)</li>
+        <li><strong>Session context</strong> (cached within a session)</li>
+        <li><strong>Conversation messages</strong></li>
+        </ol>
+        <p>This way we maximize how many sessions share cache hits.</p>
+        <p>But this can be surprisingly fragile! Examples of reasons we’ve broken this ordering before include: putting an in-depth timestamp in the static system prompt, shuffling tool order definitions non-deterministically, updating parameters of tools (e.g. what agents the AgentTool can call), etc.</p>
+        <h2>Use Messages for Updates</h2>
+        <p>There may be times when the information you put in your prompt becomes out of date, for example if you have the time or if the user changes a file. It may be tempting to update the prompt, but that would result in a cache miss and could end up being quite expensive for the user.</p>
+        <p>Consider if you can pass in this information via messages in the next turn instead. In Claude Code, we add a &lt;system-reminder&gt; tag in the next user message or tool result with the updated information for the model (e.g. it is now Wednesday), which helps preserve the cache.</p>
+        <h2>Don&#39;t change Models Mid-Session</h2>
+        <p>Prompt caches are unique to models and this can make the math of prompt caching quite unintuitive.</p>
+        <p>If you&#39;re 100k tokens into a conversation with Opus and want to ask a question that is fairly easy to answer, it would actually be more expensive to switch to Haiku than to have Opus answer, because we would need to rebuild the prompt cache for Haiku.</p>
+        <p>If you need to switch models, the best way to do it is with subagents, where Opus would prepare a &quot;handoff&quot; message to another model on the task that it needs done. We do this often with the Explore agents in Claude Code which use Haiku.</p>
+        <h2>Never Add or Remove Tools Mid-Session</h2>
+        <p>Changing the tool set in the middle of a conversation is one of the most common ways people break prompt caching. It seems intuitive — you should only give the model tools you think it needs right now. But because tools are part of the cached prefix, adding or removing a tool invalidates the cache for the entire conversation.</p>
+        <p><strong>Plan Mode — Design Around the Cache</strong></p>
+        <p>Plan mode is a great example of designing features around caching constraints. The intuitive approach would be: when the user enters plan mode, swap out the tool set to only include read-only tools. But that would break the cache.</p>
+        <p>Instead, we keep all tools in the request at all times and use EnterPlanMode and ExitPlanMode as tools themselves. When the user toggles plan mode on, the agent gets a system message explaining that it&#39;s in plan mode and what the instructions are — explore the codebase, don&#39;t edit files, call ExitPlanMode when the plan is complete. The tool definitions never change.</p>
+        <p>This has a bonus benefit: because EnterPlanMode is a tool the model can call itself, it can autonomously enter plan mode when it detects a hard problem, without any cache break.</p>
+        <p><strong>Tool Search — Defer Instead of Remove</strong></p>
+        <p>The same principle applies to our tool search feature. Claude Code can have dozens of MCP tools loaded, and including all of them in every request would be expensive. But removing them mid-conversation would break the cache.</p>
+        <p>Our solution: defer_loading. Instead of removing tools, we send lightweight stubs — just the tool name, with defer_loading: true — that the model can &quot;discover&quot; via a ToolSearch tool when needed. The full tool schemas are only loaded when the model selects them. This keeps the cached prefix stable: the same stubs are always present in the same order.</p>
+        <p>Luckily you can use the <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-search-tool">tool search</a> tool through our API to simplify this.</p>
+        <h2>Forking Context — Compaction</h2>
+        <p><img src="../assets/images/prompt-caching-lessons-learned-02.jpeg" alt="Image"></p>
+        <p>Compaction is what happens when you run out of the context window. We summarize the conversation so far and continue a new session with that summary.</p>
+        <p>Surprisingly, compaction has many edge cases with prompt caching that can be unintuitive.</p>
+        <p>In particular, when we compact we need to send the entire conversation to the model to generate a summary. If this is a separate API call with a different system prompt and no tools (which is the simple implementation), the cached prefix from the main conversation doesn&#39;t match at all. You pay full price for all those input tokens, drastically increasing the cost for the user.</p>
+        <p><strong>The Solution — Cache-Safe Forking</strong></p>
+        <p>When we run compaction, we use the exact same system prompt, user context, system context, and tool definitions as the parent conversation. We prepend the parent&#39;s conversation messages, then append the compaction prompt as a new user message at the end.</p>
+        <p>From the API&#39;s perspective, this request looks nearly identical to the parent&#39;s last request — same prefix, same tools, same history — so the cached prefix is reused. The only new tokens are the compaction prompt itself.</p>
+        <p>This does mean however that we need to save a &quot;compaction buffer&quot; so that we have enough room in the context window to include the compact message and the summary output tokens.</p>
+        <p>Compaction is tricky but luckily, you don&#39;t need to learn these lessons yourself — based on our learnings from Claude Code we built <a href="https://platform.claude.com/docs/en/build-with-claude/compaction#prompt-caching">compaction</a> directly into the API, so you can apply these patterns in your own applications.</p>
+        <h2>Lessons Learned</h2>
+        <ol>
+        <li><strong>Prompt caching is a prefix match.</strong> Any change anywhere in the prefix invalidates everything after it. Design your entire system around this constraint. Get the ordering right and most of the caching works for free.</li>
+        <li><strong>Use messages instead of system prompt changes</strong>. You may be tempted to edit the system prompt to do things like entering plan mode, changing the date, etc. but it would actually be better to insert these into messages during the conversation.</li>
+        <li><strong>Don&#39;t change tools or models mid-conversation.</strong> Use tools to model state transitions (like plan mode) rather than changing the tool set. Defer tool loading instead of removing tools.</li>
+        <li><strong>Monitor your cache hit rate like you monitor uptime.</strong> We alert on cache breaks and treat them as incidents. A few percentage points of cache miss rate can dramatically affect cost and latency.</li>
+        <li><strong>Fork operations need to share the parent&#39;s prefix.</strong> If you need to run a side computation (compaction, summarization, skill execution), use identical cache-safe parameters so you get cache hits on the parent&#39;s prefix.</li>
+        </ol>
+        <p>Claude Code is built around prompt caching from day one, you should do the same if you’re building an agent.</p>
+      </div>
+
+      <div class="post-footer">
+        <a href="../../index.html" class="back-link">← 返回目录</a>
+        <a href="../../../index.html" class="blog-link">↑ 返回博客首页</a>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

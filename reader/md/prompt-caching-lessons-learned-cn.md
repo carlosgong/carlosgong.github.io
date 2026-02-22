@@ -1,0 +1,95 @@
+---
+source: "https://x.com/trq212/status/2024574133011673516"
+clipped: 2026-02-20
+---
+# Lessons from Building Claude Code: Prompt Caching Is Everything
+工程里常说一句话："Cache Rules Everything Around Me"，这条规则对 agents 同样成立。
+
+像 Claude Code 这类长时运行的 agent 产品之所以可行，关键就在于 **prompt caching**：它让我们能够复用前几轮请求中的计算结果，显著降低延迟和成本。
+
+什么是 prompt caching？它如何工作？又该怎样在工程上实现？[可以看 @RLanceMartin 关于 prompt caching 和我们自动缓存发布的文章。](https://x.com/RLanceMartin/status/2024573404888911886)
+
+在 Claude Code，我们几乎把整个 harness 都围绕 prompt caching 来构建。更高的缓存命中率会直接降低成本，也让我们能给订阅计划提供更宽松的 rate limits。为此我们对 prompt cache hit rate 设了告警，命中率过低会直接按 SEV 处理。
+
+下面是我们在大规模优化 prompt caching 过程中总结出的经验（其中不少都违反直觉）。
+
+## 为缓存来布局 Prompt
+
+![Image](https://pbs.twimg.com/media/HBipHa1boAAXD_A?format=jpg&name=large)
+
+Prompt caching 本质上是前缀匹配（prefix matching）：API 会从请求起始位置开始缓存，一直到每个 cache\_control 断点为止。所以你放置内容的顺序影响极大，你需要尽可能让更多请求共享同一个前缀。
+
+最佳实践是：静态内容在前，动态内容在后。对 Claude Code 来说，大致是：
+
+1. **静态系统提示词** 与 Tools（全局缓存）
+2. [Claude.MD](https://claude.md/)（项目内缓存）
+3. **会话上下文**（会话内缓存）
+4. **对话消息**
+
+这样可以最大化不同会话之间的缓存命中。
+
+但这件事其实非常脆弱！我们过去破坏这个顺序的一些典型原因包括：在静态系统提示词里塞了精确到细节的时间戳、工具定义顺序出现非确定性洗牌、修改了工具参数（例如 AgentTool 可调用的 agent 列表）等。
+
+## 用消息承载更新
+
+有时你放进 prompt 的信息会过期，比如时间变化了，或者用户改了文件。直觉上你可能会想直接改 prompt，但这会导致缓存失配（cache miss），最终让用户成本上升。
+
+更好的做法通常是：在下一轮通过消息传入这些更新信息。在 Claude Code 里，我们会在下一条用户消息或工具结果中加入 `<system-reminder>` 标签，把更新后的信息传给模型（例如“现在是周三了”），从而尽量保住缓存。
+
+## 不要在会话中途切换模型
+
+Prompt cache 是按模型隔离的，这会让缓存成本的计算变得非常反直觉。
+
+如果你已经在 Opus 中进行了 100k tokens 的对话，随后想问一个“看起来很简单”的问题，切到 Haiku 反而可能更贵，因为你必须为 Haiku 重建整段 prompt cache。
+
+如果确实需要切模型，最佳方式是用 subagents：由 Opus 先整理一条 handoff 消息，再把任务交给另一个模型。我们在 Claude Code 的 Explore agents 上就经常这么做，它们会使用 Haiku。
+
+## 不要在会话中途增删工具
+
+在对话中途改变工具集合，是最常见的缓存破坏方式之一。直觉上似乎很合理：当前只给模型“现在需要的工具”。但工具本身属于缓存前缀的一部分，一旦增删任何工具，整段对话缓存都会失效。
+
+**Plan Mode —— 围绕缓存来设计**
+
+Plan mode 是一个很典型的“按缓存约束设计功能”的案例。直觉实现是：用户进入 plan mode 时，把工具集切成只读工具。但这样会破坏缓存。
+
+我们的做法是：请求里始终保留完整工具集，同时把 EnterPlanMode 和 ExitPlanMode 设计成工具本身。用户开启 plan mode 后，agent 会收到一条系统消息，明确当前处于 plan mode 以及执行规则：探索代码库、不要改文件、计划完成后调用 ExitPlanMode。工具定义全程不变。
+
+这还有一个额外好处：由于 EnterPlanMode 本身是模型可调用的工具，当模型识别到复杂问题时，它可以自主进入 plan mode，且不会触发缓存破坏。
+
+**Tool Search —— 延迟加载，不要移除**
+
+同样的原则也适用于我们的 tool search 功能。Claude Code 可能加载几十个 MCP 工具，如果每个请求都带完整 schema，成本会很高；但中途移除工具又会破坏缓存。
+
+我们的方案是 `defer_loading`。我们不移除工具，而是先发送轻量 stub —— 只有工具名，并带上 `defer_loading: true` —— 让模型在需要时通过 ToolSearch 工具去“发现”它们。只有模型真的选中某个工具，才加载完整 schema。这样缓存前缀就稳定了：同一批 stub 按同样顺序始终存在。
+
+幸运的是，你可以直接通过 API 使用 [tool search](https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-search-tool) 来简化这件事。
+
+## 上下文分叉：压缩（Compaction）
+
+![Image](https://pbs.twimg.com/media/HBitEdRbUAMVSnM?format=jpg&name=large)
+
+Compaction 是在上下文窗口耗尽时发生的机制。我们会先对已有对话做摘要，再带着这个摘要继续开启新会话。
+
+出人意料的是，compaction 在 prompt caching 上有很多反直觉边界情况。
+
+关键点在于：做 compaction 时，我们需要把整段对话传给模型来生成摘要。如果你把它作为一个独立 API 调用，并且使用不同系统提示词且不带工具（这是最直观的实现），那它与主对话的缓存前缀就完全不匹配。结果是你得为所有输入 tokens 支付全价，用户成本会显著上升。
+
+**解决方案 —— Cache-Safe Forking**
+
+做 compaction 时，我们会复用与父会话完全一致的系统提示词、用户上下文、系统上下文和工具定义。先拼接父会话消息，再把 compaction 提示追加成末尾的新用户消息。
+
+从 API 视角看，这个请求和父会话最后一次请求几乎一样：同样前缀、同样工具、同样历史，因此缓存前缀可以复用。新增 token 只剩 compaction 提示本身。
+
+当然，这也意味着我们需要预留一段“compaction buffer”，确保上下文窗口还有足够空间容纳 compact 提示和摘要输出 token。
+
+Compaction 很棘手，但你不必自己踩完这些坑。基于 Claude Code 的经验，我们已经把 [compaction](https://platform.claude.com/docs/en/build-with-claude/compaction#prompt-caching) 直接做进 API，你可以在自己的应用中直接复用这些模式。
+
+## 经验总结
+
+1. **Prompt caching 是前缀匹配。** 前缀任意位置发生变化，后面的缓存都会失效。你的系统设计应围绕这个约束展开。顺序正确，缓存大部分会“自动生效”。
+2. **尽量用消息，而不是改系统提示词。** 你可能会想通过改系统提示词来进入 plan mode、更新时间等，但在对话中把这些变化作为消息注入，通常更好。
+3. **不要在会话中途切换工具或模型。** 用工具表达状态迁移（如 plan mode），不要改工具集。对于工具，优先延迟加载，不要中途移除。
+4. **像监控可用性一样监控缓存命中率。** 我们会对缓存破坏告警并当作事故处理。哪怕只是几个百分点的 miss rate，也会显著影响成本和延迟。
+5. **分叉操作要共享父会话前缀。** 如果你要跑旁路计算（compaction、总结、skill 执行等），使用一致的 cache-safe 参数，才能复用父会话前缀命中。
+
+Claude Code 从第一天开始就是围绕 prompt caching 构建的。如果你在做 agent，也应该如此。

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How I Use Claude Code (中文)</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="container">
+    <article>
+      <header>
+        <h1>How I Use Claude Code</h1>
+        <div class="meta">
+          <span>来源: <a href="https://boristane.com/blog/how-i-use-claude-code/#phase-2-planning" target="_blank" rel="noopener">boristane.com</a></span>
+          <span>收藏于: 2026-02-22</span>
+        </div>
+        <div class="lang-switch">
+          <a href="how-boris-tane-uses-claude-code.html">源语</a> / <span>中文</span>
+        </div>
+      </header>
+
+      <div class="content">
+        <p>我已经把 <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a> 作为主要开发工具用了大约 9 个月，而我最终沉淀下来的这套工作流，和大多数人使用 AI 编码工具的方式完全不同。很多开发者是：输入一个 prompt，有时开 plan mode，修错，重复。更“终端重度用户”的那批人会拼 ralph loops、mcp、gastown（还记得吗）之类。两种方式在稍微复杂一点的任务上都会变成一团糟，最后彻底失控。</p>
+        <p>我要讲的这套工作流只有一个核心原则：<strong>在你审阅并批准一份书面计划之前，绝不让 Claude 写代码</strong>。把“规划”和“执行”强制分离，是我做过最重要的一件事。它能避免浪费、让架构决策始终由我掌控，而且相比直接上手写代码，用更少 token 就能得到显著更好的结果。</p>
+        
+        <figure class="flowchart" aria-label="workflow-overview">
+          <svg class="flowchart-svg" viewBox="0 0 980 220" role="img">
+            <defs>
+              <marker id="arrow-d1-zh" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto" markerUnits="strokeWidth">
+                <polygon points="0 0, 10 3.5, 0 7" class="flow-edge"></polygon>
+              </marker>
+            </defs>
+            <rect class="flow-node" x="20" y="88" width="120" height="44" rx="8"></rect>
+            <rect class="flow-node" x="170" y="88" width="120" height="44" rx="8"></rect>
+            <rect class="flow-node" x="320" y="88" width="120" height="44" rx="8"></rect>
+            <rect class="flow-node" x="500" y="88" width="120" height="44" rx="8"></rect>
+            <rect class="flow-node" x="650" y="88" width="120" height="44" rx="8"></rect>
+            <rect class="flow-node" x="810" y="88" width="150" height="44" rx="8"></rect>
+        
+            <path class="flow-edge" d="M140 110 L170 110" marker-end="url(#arrow-d1-zh)"></path>
+            <path class="flow-edge" d="M290 110 L320 110" marker-end="url(#arrow-d1-zh)"></path>
+            <path class="flow-edge" d="M440 110 L500 110" marker-end="url(#arrow-d1-zh)"></path>
+            <path class="flow-edge" d="M620 110 L650 110" marker-end="url(#arrow-d1-zh)"></path>
+            <path class="flow-edge" d="M770 110 L810 110" marker-end="url(#arrow-d1-zh)"></path>
+            <path class="flow-edge" d="M380 132 L380 174 L440 174 L440 132" marker-end="url(#arrow-d1-zh)"></path>
+        
+            <text class="flow-label" x="80" y="115">调研</text>
+            <text class="flow-label" x="230" y="115">规划</text>
+            <text class="flow-label" x="380" y="115">批注</text>
+            <text class="flow-label" x="560" y="115">Todo 列表</text>
+            <text class="flow-label" x="710" y="115">实现</text>
+            <text class="flow-label" x="885" y="115">反馈与迭代</text>
+            <text class="flow-note" x="386" y="168">重复 1-6 次</text>
+          </svg>
+        </figure>
+        
+        
+        
+        
+        <h2>第一阶段：调研</h2>
+        <p>每个有意义的任务都从“深读指令”开始。我会让 Claude 在动手前先彻底理解代码库的相关部分。而且我总是要求它把发现写进一个持久化 markdown 文件，而不是只在聊天里口头总结。</p>
+        <blockquote>
+        <p>深入阅读这个文件夹，彻底理解它的工作方式、用途和所有细节。完成后，把你学到的内容和发现写成一份详细的 research.md 报告</p>
+        </blockquote>
+        <blockquote>
+        <p>详细研究通知系统，理解它的复杂细节，并写一份完整的 research.md，记录关于通知如何工作的所有信息</p>
+        </blockquote>
+        <blockquote>
+        <p>梳理任务调度流程，深入理解并寻找潜在 bug。系统里肯定有 bug，因为它有时会执行本该取消的任务。继续研究直到找出所有 bug，不要提前停。完成后，把发现完整写入 research.md</p>
+        </blockquote>
+        <p>注意这些用词：<strong>“深入地”</strong>、<strong>“非常详细地”</strong>、<strong>“复杂细节”</strong>、<strong>“全部过一遍”</strong>。这不是修辞。没有这些词，Claude 就会略读：看一下文件、在函数签名层面判断“它是干什么的”，然后继续往下走。你必须明确传达：表层阅读不可接受。</p>
+        <p>这个书面产物（<code>research.md</code>）至关重要。它不是为了让 Claude 做作业，而是我的“审阅界面”。我可以读它、验证 Claude 是否真的理解系统，并在规划发生之前纠正误解。调研错了，计划就会错；计划错了，实现就会错。垃圾进，垃圾出。</p>
+        <p>这是 AI 辅助编码最贵的失败模式，而且通常不是语法错、也不是逻辑错，而是“局部看起来能跑，放进系统就破坏上下文”的实现。比如忽略了现有缓存层的函数、没考虑 ORM 约定的迁移、重复实现已存在逻辑的 API 端点。调研阶段能提前挡住这些问题。</p>
+        <h2>第二阶段：规划</h2>
+        <p>当我审完调研后，我会让它把实现计划写到另一个 markdown 文件里。</p>
+        <blockquote>
+        <p>我想做一个新功能 &lt;名称和描述&gt;，让系统可以实现 &lt;业务结果&gt;。请写一份详细的 plan.md 说明如何实现，包含代码片段</p>
+        </blockquote>
+        <blockquote>
+        <p>列表接口应该从 offset 分页改成 cursor 分页。请写一份详细的 plan.md 说明如何落地。给建议前先读源码，计划必须基于真实代码库</p>
+        </blockquote>
+        <p>它生成的计划通常会包含：方案的详细解释、展示实际改动的代码片段、将被修改的文件路径，以及注意事项和取舍。</p>
+        <p>我用的是自己的 <code>.md</code> 计划文件，而不是 Claude Code 内置的 plan mode。内置 plan mode 不好用。markdown 文件让我有完整控制权：我可以在编辑器里改、加行内注释，而且它会作为项目内真实产物持久保存。</p>
+        <p><strong>我高频使用的一个技巧：</strong> 对于边界清晰的小功能，如果我在开源仓库里见过不错实现，我会把那段代码作为参考一起给 Claude。比如我要加 sortable ID，就贴一段已有项目的 ID 生成实现，再说“这是他们做 sortable ID 的方式，写一份 plan.md 说明我们如何采用类似方案”。当 Claude 有具体参考实现时，效果会明显好于让它从零设计。</p>
+        <p>但“计划文档”本身并不是最关键的，真正关键的是接下来的步骤。</p>
+        <h2>批注循环</h2>
+        <p>这是我工作流里最有辨识度、也是我增值最多的部分。</p>
+        
+        <figure class="flowchart" aria-label="annotation-cycle">
+          <svg class="flowchart-svg" viewBox="0 0 860 560" role="img">
+            <defs>
+              <marker id="arrow-d2-zh" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto" markerUnits="strokeWidth">
+                <polygon points="0 0, 10 3.5, 0 7" class="flow-edge"></polygon>
+              </marker>
+            </defs>
+        
+            <rect class="flow-node" x="320" y="24" width="220" height="46" rx="8"></rect>
+            <rect class="flow-node" x="320" y="96" width="220" height="46" rx="8"></rect>
+            <rect class="flow-node" x="320" y="168" width="220" height="46" rx="8"></rect>
+            <rect class="flow-node" x="320" y="240" width="220" height="46" rx="8"></rect>
+            <rect class="flow-node" x="320" y="312" width="220" height="46" rx="8"></rect>
+            <polygon class="flow-node" points="430,386 512,430 430,474 348,430"></polygon>
+            <rect class="flow-node" x="610" y="406" width="190" height="46" rx="8"></rect>
+        
+            <path class="flow-edge" d="M430 70 L430 96" marker-end="url(#arrow-d2-zh)"></path>
+            <path class="flow-edge" d="M430 142 L430 168" marker-end="url(#arrow-d2-zh)"></path>
+            <path class="flow-edge" d="M430 214 L430 240" marker-end="url(#arrow-d2-zh)"></path>
+            <path class="flow-edge" d="M430 286 L430 312" marker-end="url(#arrow-d2-zh)"></path>
+            <path class="flow-edge" d="M430 358 L430 386" marker-end="url(#arrow-d2-zh)"></path>
+            <path class="flow-edge" d="M512 430 L610 430" marker-end="url(#arrow-d2-zh)"></path>
+            <path class="flow-edge" d="M348 430 L170 430 L170 119 L320 119" marker-end="url(#arrow-d2-zh)"></path>
+        
+            <text class="flow-label" x="430" y="51">Claude 写 plan.md</text>
+            <text class="flow-label" x="430" y="123">我在编辑器中审阅</text>
+            <text class="flow-label" x="430" y="195">我添加行内注释</text>
+            <text class="flow-label" x="430" y="267">发回给 Claude</text>
+            <text class="flow-label" x="430" y="339">Claude 更新计划</text>
+            <text class="flow-label" x="430" y="434">是否满意?</text>
+            <text class="flow-label" x="705" y="435">请求 todo 列表</text>
+        
+            <text class="flow-note" x="560" y="420">是</text>
+            <text class="flow-note" x="236" y="418">否</text>
+          </svg>
+        </figure>
+        
+        
+        
+        <p>批注流程是：Claude 写完计划后，我在编辑器里直接在文档中加<strong>行内注释</strong>。这些注释会纠正它的假设、否决某个做法、补充它不知道的领域约束，或直接提供业务上下文。</p>
+        <p>注释长度差异很大。有时只是两个词：比如在它标成可选的参数旁边写“不可选”。有时是一整段：解释业务约束，或贴一个我期望的数据结构代码片段。</p>
+        <p>我会加的一些真实注释示例：</p>
+        <ul>
+        <li><em>“迁移用 drizzle:generate，不要写原生 SQL”</em> —— 它本来不知道的领域约束</li>
+        <li><em>“不对，这里应该是 PATCH，不是 PUT”</em> —— 纠正错误假设</li>
+        <li><em>“这一节整个删掉，这里不需要缓存”</em> —— 否决提议方案</li>
+        <li><em>“队列消费者已经处理重试，这段重试逻辑是冗余的。删掉，直接让它失败”</em> —— 解释为什么要改</li>
+        <li><em>“这段是错的，可见性字段应该挂在 list 上，不是 item 上。list 一旦 public，所有 item 都应该 public。按这个重写 schema 部分”</em> —— 重定向整段计划</li>
+        </ul>
+        <p>然后我把文档发回 Claude：</p>
+        <blockquote>
+        <p>我在文档里加了一些注释，请逐条处理并更新文档。先不要实现</p>
+        </blockquote>
+        <p><strong>这个循环会重复 1 到 6 次。</strong> 这里“<strong>先不要实现</strong>”这道护栏非常关键。没有这句，Claude 往往在它“觉得计划够好了”那一刻就开始写代码。但在我明确批准前，它都还不够好。</p>
+        <h3>为什么这套方法有效</h3>
+        <p>这个 markdown 文件就是我和 Claude 的<strong>共享可变状态</strong>。我可以按自己的节奏思考，在出错的精确位置写下修正，再继续推进，不会丢上下文。与其在聊天里长篇解释，我是在文档里“指到具体位置”并直接改那一段。</p>
+        <p>这和靠聊天消息远程操控实现是本质不同的。计划文档是可整体审阅的结构化规格；聊天记录要靠滚动回溯才能重建决策链。前者在工程上明显更优。</p>
+        <p>三轮“我加了注释，请更新计划”，就可以把一份泛泛的计划，打磨成与现有系统贴合度很高的实施规格。Claude 很擅长读代码、提方案、写实现；但它不知道我的产品优先级、用户痛点、以及我愿意接受的工程取舍。批注循环就是我注入这些判断力的机制。</p>
+        <h3>Todo 列表</h3>
+        <p>在实现开始前，我总会再加一个步骤，让它给出细粒度任务拆解：</p>
+        <blockquote>
+        <p>在计划里补一份详细的 todo 列表，包含所有阶段和单项任务。先不要实现</p>
+        </blockquote>
+        <p>这样会形成一个可追踪 checklist。Claude 实现过程中会把任务逐个标完成，我随时扫一眼计划就知道进度在哪。对于持续数小时的会话尤其有价值。</p>
+        <h2>第三阶段：实现</h2>
+        <p>当计划准备好后，我会发出实现指令。这个 prompt 我已经沉淀成可复用模板：</p>
+        <blockquote>
+        <p>全部实现。每完成一个任务或阶段，就在计划文档中标记完成。不要中途停，直到所有任务和阶段都完成。不要加不必要的注释或 jsdoc，不要用 any 或 unknown 类型。持续运行 typecheck，确保没有引入新问题。</p>
+        </blockquote>
+        <p>这一句里包含了我关心的全部约束：</p>
+        <ul>
+        <li><em>“全部实现”</em>：按计划全量执行，不要挑着做</li>
+        <li><em>“在计划文档里标完成”</em>：计划是进度唯一事实来源</li>
+        <li><em>“不要停，直到全部完成”</em>：中途不要频繁等待确认</li>
+        <li><em>“不要加不必要注释或 jsdoc”</em>：保持代码干净</li>
+        <li><em>“不要用 any/unknown”</em>：维持严格类型</li>
+        <li><em>“持续跑 typecheck”</em>：尽早发现问题，不要最后堆雷</li>
+        </ul>
+        <p>这套措辞（仅少量变体）我几乎每次实现会话都用。等到我说“全部实现”时，所有决策已经在前面做完并验证过了。实现变成机械执行，而不是创造性探索。<strong>这是刻意设计的：我希望实现阶段是“无聊”的。</strong> 真正的创造性工作发生在批注循环里。计划一旦正确，执行就应该直接。</p>
+        <p>没有规划阶段时，常见情况是 Claude 在早期做了一个“看似合理但其实错误”的假设，15 分钟后构建出一串要回滚的改动。“先不要实现”这道护栏可以基本消灭这种浪费。</p>
+        <p>Claude 开始执行后，我的角色会从“架构师”切到“监督者”，prompt 也会变短很多。</p>
+        
+        <figure class="flowchart" aria-label="implementation-loop">
+          <svg class="flowchart-svg" viewBox="0 0 980 360" role="img">
+            <defs>
+              <marker id="arrow-d3-zh" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto" markerUnits="strokeWidth">
+                <polygon points="0 0, 10 3.5, 0 7" class="flow-edge"></polygon>
+              </marker>
+            </defs>
+        
+            <rect class="flow-node" x="20" y="88" width="160" height="44" rx="8"></rect>
+            <rect class="flow-node" x="230" y="88" width="170" height="44" rx="8"></rect>
+            <polygon class="flow-node" points="512,76 594,110 512,144 430,110"></polygon>
+            <rect class="flow-node" x="380" y="224" width="170" height="44" rx="8"></rect>
+            <polygon class="flow-node" points="690,76 772,110 690,144 608,110"></polygon>
+            <rect class="flow-node" x="840" y="88" width="120" height="44" rx="8"></rect>
+        
+            <path class="flow-edge" d="M180 110 L230 110" marker-end="url(#arrow-d3-zh)"></path>
+            <path class="flow-edge" d="M400 110 L430 110" marker-end="url(#arrow-d3-zh)"></path>
+            <path class="flow-edge" d="M594 110 L608 110" marker-end="url(#arrow-d3-zh)"></path>
+            <path class="flow-edge" d="M772 110 L840 110" marker-end="url(#arrow-d3-zh)"></path>
+        
+            <path class="flow-edge" d="M512 144 L512 224" marker-end="url(#arrow-d3-zh)"></path>
+            <path class="flow-edge" d="M380 246 L100 246 L100 132" marker-end="url(#arrow-d3-zh)"></path>
+            <path class="flow-edge" d="M690 144 L690 304 L70 304 L70 132" marker-end="url(#arrow-d3-zh)"></path>
+        
+            <text class="flow-label" x="100" y="115">Claude 实现</text>
+            <text class="flow-label" x="315" y="115">我审查 / 测试</text>
+            <text class="flow-label" x="512" y="114">正确吗?</text>
+            <text class="flow-label" x="465" y="252">简短纠正</text>
+            <text class="flow-label" x="690" y="114">还有任务吗?</text>
+            <text class="flow-label" x="900" y="115">完成</text>
+        
+            <text class="flow-note" x="522" y="184">否</text>
+            <text class="flow-note" x="596" y="102">是</text>
+            <text class="flow-note" x="699" y="182">是</text>
+            <text class="flow-note" x="805" y="102">否</text>
+          </svg>
+        </figure>
+        
+        
+        
+        <p>规划阶段的一条批注可能是一整段；实现阶段的纠偏通常只要一句话：</p>
+        <ul>
+        <li><em>“你没实现 <code>deduplicateByTitle</code> 函数。”</em></li>
+        <li><em>“你把 settings 页面建在主应用了，应该在 admin 应用，迁过去。”</em></li>
+        </ul>
+        <p>因为 Claude 已经持有完整计划上下文和当前会话状态，简短纠正就足够了。</p>
+        <p>前端工作通常最迭代。我会在浏览器里测，然后快速给短反馈：</p>
+        <ul>
+        <li><em>“再宽一点”</em></li>
+        <li><em>“还是被裁了”</em></li>
+        <li><em>“有 2px 缝”</em></li>
+        </ul>
+        <p>视觉问题时我也会贴截图。一个“表格错位”的截图，往往比文字描述更快更准。</p>
+        <p>我还会频繁指向现有实现：</p>
+        <ul>
+        <li><em>“这个表格要和 users 表一模一样：表头、分页、行密度都一致。”</em></li>
+        </ul>
+        <p>这比从零描述设计精确得多。成熟代码库里的新功能，大多是已有模式的变体。新 settings 页面就应该长得像现有 settings 页面。指向参考实现，就把大量隐含要求一起传达了。Claude 通常会先去读参考文件再改。</p>
+        <p>当方向明显错了，我不会尝试“在错路上修补”，而是直接回滚并重新收敛范围：</p>
+        <ul>
+        <li><em>“我已经全回滚了。现在只要把列表视图做得更简洁，别做别的。”</em></li>
+        </ul>
+        <p>回滚后缩小范围，几乎总是比在坏方案上增量修补更快、更好。</p>
+        <h2>保持主导权</h2>
+        <p>即便我把执行委托给 Claude，<strong>我也不会把“建什么”这件事的主导权交出去</strong>。我绝大多数主动控制都发生在 <code>plan.md</code> 文档里。</p>
+        <p>这很关键，因为 Claude 有时会给出“技术上正确、项目上错误”的方案。比如过度设计、修改了被别处依赖的公共 API 签名，或者在简单问题上选了更复杂路径。对整个系统、产品方向、团队工程文化的上下文，我比它更完整。</p>
+        
+        <figure class="flowchart" aria-label="staying-in-control">
+          <svg class="flowchart-svg" viewBox="0 0 940 500" role="img">
+            <defs>
+              <marker id="arrow-d4-zh" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto" markerUnits="strokeWidth">
+                <polygon points="0 0, 10 3.5, 0 7" class="flow-edge"></polygon>
+              </marker>
+            </defs>
+        
+            <rect class="flow-node" x="320" y="20" width="300" height="48" rx="8"></rect>
+            <rect class="flow-node" x="320" y="110" width="300" height="48" rx="8"></rect>
+        
+            <rect class="flow-node" x="40" y="230" width="190" height="46" rx="8"></rect>
+            <rect class="flow-node" x="265" y="230" width="190" height="46" rx="8"></rect>
+            <rect class="flow-node" x="490" y="230" width="190" height="46" rx="8"></rect>
+            <rect class="flow-node" x="715" y="230" width="190" height="46" rx="8"></rect>
+        
+            <rect class="flow-node" x="290" y="370" width="360" height="52" rx="8"></rect>
+        
+            <path class="flow-edge" d="M470 68 L470 110" marker-end="url(#arrow-d4-zh)"></path>
+            <path class="flow-edge" d="M470 158 L135 230" marker-end="url(#arrow-d4-zh)"></path>
+            <path class="flow-edge" d="M470 158 L360 230" marker-end="url(#arrow-d4-zh)"></path>
+            <path class="flow-edge" d="M470 158 L585 230" marker-end="url(#arrow-d4-zh)"></path>
+            <path class="flow-edge" d="M470 158 L810 230" marker-end="url(#arrow-d4-zh)"></path>
+        
+            <path class="flow-edge" d="M135 276 L390 370" marker-end="url(#arrow-d4-zh)"></path>
+            <path class="flow-edge" d="M360 276 L450 370" marker-end="url(#arrow-d4-zh)"></path>
+            <path class="flow-edge" d="M585 276 L500 370" marker-end="url(#arrow-d4-zh)"></path>
+            <path class="flow-edge" d="M810 276 L560 370" marker-end="url(#arrow-d4-zh)"></path>
+        
+            <text class="flow-label" x="470" y="49">Claude 提出变更</text>
+            <text class="flow-label" x="470" y="140">我逐项评估</text>
+        
+            <text class="flow-label" x="135" y="258">原样接受</text>
+            <text class="flow-label" x="360" y="258">调整做法</text>
+            <text class="flow-label" x="585" y="258">跳过 / 删除</text>
+            <text class="flow-label" x="810" y="258">覆盖技术选型</text>
+        
+            <text class="flow-label" x="470" y="402">收敛后的实现范围</text>
+          </svg>
+        </figure>
+        
+        
+        
+        <p><strong>从提案里做 cherry-pick：</strong> 当 Claude 提多个问题时，我会逐条下决策：<em>“第一个用 Promise.all，别搞复杂；第三个拆成独立函数提升可读性；第四第五先忽略，不值得这个复杂度。”</em> 这是基于“当前什么最重要”的逐项决策。</p>
+        <p><strong>主动裁剪范围：</strong> 计划里有锦上添花项时我会直接砍：<em>“把下载功能从计划里删掉，这轮不做。”</em> 这样可以抑制范围蔓延。</p>
+        <p><strong>保护既有接口：</strong> 我知道某些接口不能动时会设硬约束：<em>“这三个函数签名不能改，改调用方，不改库。”</em></p>
+        <p><strong>覆盖技术选型：</strong> 有时我有明确偏好而 Claude 不知道：<em>“用这个模型，不用那个”</em> 或 <em>“用这个库内置方法，不要手写自定义实现。”</em> 直接、快速、有效。</p>
+        <p>Claude 负责机械执行；我负责判断取舍。计划负责沉淀大决策；选择性指导处理实现过程中冒出来的小决策。</p>
+        <h2>单次长会话</h2>
+        <p>我会在<strong>单个长会话</strong>里串行跑完调研、规划和实现，而不是拆成多个会话。一个会话里可能先深读文件夹，再做三轮计划批注，然后完整实现，一次跑完。</p>
+        <p>我并没有遇到大家常说的“上下文到 50% 后明显退化”。相反，当我说“全部实现”时，Claude 已经在整个会话里持续构建理解：调研时读文件、批注循环里修正心智模型、吸收我的领域约束。</p>
+        <p>即使上下文窗口逼近上限，Claude 的自动压缩也通常能保留足够上下文继续推进。更重要的是，计划文档这个持久化产物在压缩后仍然完整可用，我随时可以让它回到文档继续执行。</p>
+        <h2>一句话总结工作流</h2>
+        <p>深入阅读，写出计划，反复批注直到计划正确，再让 Claude 不间断执行全部内容，并在过程中持续类型检查。</p>
+        <p>就这么简单。没有魔法 prompt，没有复杂系统指令，也没有花哨技巧。只是把“思考”和“打字”分开的纪律化流水线。调研阶段避免无知改动；计划阶段避免错误改动；批注循环注入我的判断；实现指令则在所有决策完成后，允许它连续执行不被打断。</p>
+        <p>试试这套流程。你会很难再回到“没有一份可批注计划文档就直接和 coding agent 对话”的交付方式。</p>
+      </div>
+
+      <div class="post-footer">
+        <a href="../../index.html" class="back-link">← 返回目录</a>
+        <a href="../../../index.html" class="blog-link">↑ 返回博客首页</a>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

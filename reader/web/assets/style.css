@@ -250,6 +250,52 @@ article header h1{
   padding: 0;
 }
 
+.content .flowchart{
+  margin: 22px 0;
+  padding: 14px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: #f7f7f6;
+}
+
+.content .flowchart-svg{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.content .flow-node{
+  fill: #ffffff;
+  stroke: #60605d;
+  stroke-width: 1.5;
+}
+
+.content .flow-edge{
+  fill: none;
+  stroke: #60605d;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.content .flowchart-svg marker polygon.flow-edge{
+  fill: #60605d;
+}
+
+.content .flow-label{
+  fill: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Microsoft YaHei UI", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 13px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.content .flow-note{
+  fill: var(--muted);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Microsoft YaHei UI", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 12px;
+}
+
 .content table{
   width: 100%;
   border-collapse: collapse;
@@ -374,5 +420,18 @@ article header h1{
 
   .lang-switch{
     text-align: left;
+  }
+
+  .content .flowchart{
+    padding: 10px;
+    margin: 18px 0;
+  }
+
+  .content .flow-label{
+    font-size: 12px;
+  }
+
+  .content .flow-note{
+    font-size: 11px;
   }
 }
